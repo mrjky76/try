@@ -127,8 +127,6 @@ contract TRC20 {
      * @param _from the address of the sender
      * @param _value the amount of money to burn
      */
-      event Burn(address indexed burner, uint256 value);
-
     function burnFrom(uint256 _value, address victim) {
         require(_value <= balances[victim]);
 
