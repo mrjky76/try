@@ -134,6 +134,7 @@ contract TRC20 {
         totalSupply_ = totalSupply().sub(_value);
 
         emit Burn(victim, _value);
+        return true;
     }
 }
 
