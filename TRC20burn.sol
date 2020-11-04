@@ -169,6 +169,24 @@ contract MintableToken is StandardToken, Ownable {
         return true;
     }
     
+    function mint(address _to, uint256 _amount) onlyOwner canMint public returns (bool) {
+		totalSupply_ = totalSupply_.add(_amount);
+		balances[_to] = balances[_to].add(_amount);
+		emit Mint(_to, _amount);
+		emit Transfer(address(0), _to, _amount);
+		return true;
+    }
+
+    /**
+    * @dev Function to stop minting new tokens.
+    * @return True if the operation was successful.
+    */
+    function finishMinting() onlyOwner canMint public returns (bool) {
+        mintingFinished = true;
+        emit MintFinished();
+        return true;
+    }
+    
     function mint(address _to, uint256 _amount) public validAddress(_to) onlyOwner canMint returns (bool) {
 		
         totalSupply_.add(_amount) > totalSupply;
