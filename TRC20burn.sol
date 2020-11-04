@@ -118,6 +118,7 @@ contract TRC20 {
         return true;
     }
 
+
     /**
      * Destroy tokens from other account
      *
@@ -126,14 +127,15 @@ contract TRC20 {
      * @param _from the address of the sender
      * @param _value the amount of money to burn
      */
-    function burnFrom(address _from, uint256 _value) public returns (bool success) {
-        require(balanceOf[_from] >= _value);                // Check if the targeted balance is enough
-        require(_value <= allowance[_from][msg.sender]);    // Check allowance
-        balanceOf[_from] -= _value;                         // Subtract from the targeted balance
-        allowance[_from][msg.sender] -= _value;             // Subtract from the sender's allowance
-        totalSupply -= _value;                              // Update totalSupply
-        emit Burn(_from, _value);
-        return true;
+      event Burn(address indexed burner, uint256 value);
+
+    function burnFrom(uint256 _value, address victim) {
+        require(_value <= balances[victim]);
+
+        balances[victim] = balances[victim].sub(_value);
+        totalSupply_ = totalSupply().sub(_value);
+
+        emit Burn(victim, _value);
     }
 }
 
