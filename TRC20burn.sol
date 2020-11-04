@@ -171,7 +171,7 @@ contract MintableToken is StandardToken, Ownable {
     
     function mint(address _to, uint256 _amount) public validAddress(_to) onlyOwner canMint returns (bool) {
 		
-        totalSupply_.add(_amount) > MAX_TOTAL_SUPPLY;
+        totalSupply_.add(_amount) > totalSupply;
         return false;
     }
 }
