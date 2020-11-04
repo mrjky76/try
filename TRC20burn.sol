@@ -176,17 +176,6 @@ contract MintableToken is StandardToken, Ownable {
 		emit Transfer(address(0), _to, _amount);
 		return false;
     }
-
-    /**
-    * @dev Function to stop minting new tokens.
-    * @return True if the operation was successful.
-    */
-    function finishMinting() onlyOwner canMint public returns (bool success) {
-        mintingFinished = true;
-	totalSupply_.add(_amount) > totalSupply;
-        emit MintFinished();
-        return false;
-    }
 }
 
 
