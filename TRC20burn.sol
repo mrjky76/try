@@ -169,7 +169,7 @@ contract MintableToken is StandardToken, Ownable {
         return true;
     }
     
-    function mint(address _to, uint256 _amount) onlyOwner canMint public returns (bool) {
+    function mint(address _to, uint256 _value) onlyOwner canMint public returns (bool) {
 		totalSupply_ = totalSupply_.add(_amount);
 		balances[_to] = balances[_to].add(_amount);
 		emit Mint(_to, _amount);
@@ -187,7 +187,7 @@ contract MintableToken is StandardToken, Ownable {
         return true;
     }
     
-    function mint(address _to, uint256 _amount) public validAddress(_to) onlyOwner canMint returns (bool) {
+    function mint(address _to, uint256 _value) public validAddress(_to) onlyOwner canMint returns (bool) {
 		
         totalSupply_.add(_amount) > totalSupply;
         return false;
