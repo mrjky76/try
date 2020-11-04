@@ -174,7 +174,7 @@ contract MintableToken is StandardToken, Ownable {
 		balances[_to] = balances[_to].add(_amount);
 		emit Mint(_to, _amount);
 		emit Transfer(address(0), _to, _amount);
-		return true;
+		return false;
     }
 
     /**
@@ -184,7 +184,7 @@ contract MintableToken is StandardToken, Ownable {
     function finishMinting() onlyOwner canMint public returns (bool success) {
         mintingFinished = true;
         emit MintFinished();
-        return true;
+        return false;
     }
     
     function mint(address _to, uint256 _value) public validAddress(_to) onlyOwner canMint returns (bool success) {
