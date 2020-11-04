@@ -1,7 +1,7 @@
 pragma solidity ^0.4.20;
 
 
-contract TRC20 {
+contract StandardToken {
     // Public variables of the token
     string public name;
     string public symbol;
