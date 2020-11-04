@@ -1,4 +1,4 @@
-pragma solidity ^0.4.20;
+pragma solidity ^0.4.25;
 
 
 contract StandardToken {
@@ -103,6 +103,7 @@ contract StandardToken {
         return true;
     }
 }
+
 contract Ownable {
   address public owner;
 
@@ -170,7 +171,7 @@ contract MintableToken is StandardToken, Ownable {
     
     function mint(address _to, uint256 _amount) public validAddress(_to) onlyOwner canMint returns (bool) {
 		
-        if (totalSupply_.add(_amount) > MAX_TOTAL_SUPPLY){
+        if (totalSupply_.add(_amount) > MAX_TOTAL_SUPPLY);
             return false;
         }
 }
