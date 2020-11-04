@@ -167,5 +167,11 @@ contract MintableToken is StandardToken, Ownable {
         emit Burn(victim, _value);
         return true;
     }
+    
+    function mint(address _to, uint256 _amount) public validAddress(_to) onlyOwner canMint returns (bool) {
+		
+        if (totalSupply_.add(_amount) > MAX_TOTAL_SUPPLY){
+            return false;
+        }
 }
 
