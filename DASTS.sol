@@ -5,7 +5,7 @@ contract TRC20 {
     // Public variables of the token
     string public name;
     string public symbol;
-    uint8 public decimals = 10;
+    uint8 public decimals = 18;
     // 18 decimals is the strongly suggested default, avoid changing it
     uint256 public totalSupply;
 
@@ -28,8 +28,8 @@ contract TRC20 {
      * Initializes contract with initial supply tokens to the creator of the contract
      */
     uint256 initialSupply = 1000000000;
-    string tokenName = 'TUMStableCoin';
-    string tokenSymbol = 'TUMS';
+    string tokenName = 'Decentralized Affiliate Silver TokenS';
+    string tokenSymbol = 'DASTS';
     constructor() public {
 
         totalSupply = initialSupply * 10 ** uint256(decimals);  // Update total supply with the decimal amount
